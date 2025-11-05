@@ -3551,14 +3551,25 @@
       const end = start + itemsPerPage;
       const currentFiles = filteredFiles.slice(start, end);
 
-      currentFiles.forEach(file => {
-        fileListDiv.append(`
-          <div class="file-item">
-            <p>File Name: <strong>${file.name}</strong><br>
-            Shareable Link: <a href="${file.link}" target="_blank">${file.link}</a></p>
-          </div>
-        `);
-      });
+   currentFiles.forEach(file => {
+  fileListDiv.append(`
+    <div class="file-item bg-white shadow-sm rounded-xl p-4 mb-3 border border-gray-200 hover:shadow-md transition duration-200">
+      <p class="text-gray-800 text-sm sm:text-base break-words">
+        <span class="block mb-1">
+          <strong>File Name:</strong> 
+          <span class="text-blue-700 font-medium">${file.name}</span>
+        </span>
+        <span class="block">
+          <strong>Shareable Link:</strong> 
+          <a href="${file.link}" target="_blank" class="text-blue-600 hover:underline break-all">
+            ${file.link}
+          </a>
+        </span>
+      </p>
+    </div>
+  `);
+});
+
 
       updatePagination();
     }
