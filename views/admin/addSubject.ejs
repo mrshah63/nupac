@@ -1,23 +1,93 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Add Subject</title>
-  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body class="container mt-5">
-  <h2>Add Subject</h2>
-  <form method="POST" action="/admin/subject/new">
-    <label>Course</label>
-    <select name="courseCode" class="form-control mb-2">
-      <% courses.forEach(c => { %>
-        <option value="<%= c.code %>"><%= c.name %></option>
-      <% }) %>
-    </select>
-    <input type="number" name="semester" placeholder="Semester" class="form-control mb-2" required>
-    <input type="text" name="subjectCode" placeholder="Subject Code" class="form-control mb-2" required>
-    <input type="text" name="subjectName" placeholder="Subject Name" class="form-control mb-2" required>
-    <input type="url" name="folderLink" placeholder="Google Drive Link" class="form-control mb-2" required>
-    <button type="submit" class="btn btn-primary">Add Subject</button>
-  </form>
+
+<body class="bg-gray-100 flex items-center justify-center min-h-screen p-4">
+  <div class="bg-white shadow-md rounded-2xl p-6 sm:p-8 w-full max-w-md">
+    <h2 class="text-2xl sm:text-3xl font-bold text-center text-blue-700 mb-6">
+      Add New Subject
+    </h2>
+
+    <form method="POST" action="/admin/subject/new" class="space-y-4">
+      <!-- Course Dropdown -->
+      <div>
+        <label for="courseCode" class="block text-sm font-medium text-gray-700 mb-1">Select Course</label>
+        <select 
+          id="courseCode" 
+          name="courseCode" 
+          required
+          class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+        >
+          <% courses.forEach(c => { %>
+            <option value="<%= c.code %>"><%= c.name %></option>
+          <% }) %>
+        </select>
+      </div>
+
+      <!-- Semester -->
+      <div>
+        <label for="semester" class="block text-sm font-medium text-gray-700 mb-1">Semester</label>
+        <input 
+          type="number" 
+          id="semester" 
+          name="semester" 
+          placeholder="Semester"
+          required
+          class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+        >
+      </div>
+
+      <!-- Subject Code -->
+      <div>
+        <label for="subjectCode" class="block text-sm font-medium text-gray-700 mb-1">Subject Code</label>
+        <input 
+          type="text" 
+          id="subjectCode" 
+          name="subjectCode" 
+          placeholder="e.g., CS101"
+          required
+          class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+        >
+      </div>
+
+      <!-- Subject Name -->
+      <div>
+        <label for="subjectName" class="block text-sm font-medium text-gray-700 mb-1">Subject Name</label>
+        <input 
+          type="text" 
+          id="subjectName" 
+          name="subjectName" 
+          placeholder="Subject Name"
+          required
+          class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+        >
+      </div>
+
+      <!-- Folder Link -->
+      <div>
+        <label for="folderLink" class="block text-sm font-medium text-gray-700 mb-1">Google Drive Link</label>
+        <input 
+          type="url" 
+          id="folderLink" 
+          name="folderLink" 
+          placeholder="https://drive.google.com/..."
+          required
+          class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+        >
+      </div>
+
+      <!-- Submit Button -->
+      <button 
+        type="submit" 
+        class="w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 rounded-lg transition duration-200">
+        Add Subject
+      </button>
+    </form>
+  </div>
 </body>
 </html>
