@@ -48,6 +48,11 @@ app.get("/", async (req, res) => {
 app.get("/about", (req, res) => {
   res.render("about");
 });
+
+//privacy_policy.ejs
+app.get("/privacy/policy", (req, res) => {
+  res.render("privacy_policy");
+});
 app.get("/uploads", (req, res) => {
   res.render("uploads");
 });
